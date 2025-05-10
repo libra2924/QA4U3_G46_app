@@ -76,11 +76,11 @@ if st.session_state.step == 1 and user_id:
             cols = st.columns([2, 1])
             with cols[0]:
                 # st.audio(row["filepath"])
-
+                print(row)
                 if is_streamlit_cloud:
                     # Streamlit Cloud上でのファイルパス
                     ori_path = Path(row['filepath'])
-                    relative_path = ori_path.relative_to("../data/raw")  # jvs_ver1/jvs017/parallel100/wav24kHz16bit/VOICEACTRESS100_001.wav
+                    relative_path = ori_path.relative_to("./data/raw")  # jvs_ver1/jvs017/parallel100/wav24kHz16bit/VOICEACTRESS100_001.wav
                     audio_path = f"https://raw.githubusercontent.com/libra2924/QA4U3_G46_app/main/data/raw_extracted/" + str(relative_path)
                     print(audio_path)
                 else:
@@ -174,7 +174,7 @@ elif st.session_state.step == 3 and user_id:
                 if is_streamlit_cloud:
                     # Streamlit Cloud上でのファイルパス
                     ori_path = Path(row['filepath'])
-                    relative_path = ori_path.relative_to("../data/raw")  # jvs_ver1/jvs017/parallel100/wav24kHz16bit/VOICEACTRESS100_001.wav
+                    relative_path = ori_path.relative_to("./data/raw")  # jvs_ver1/jvs017/parallel100/wav24kHz16bit/VOICEACTRESS100_001.wav
                     audio_path = f"https://raw.githubusercontent.com/libra2924/QA4U3_G46_app/main/data/raw_extracted/" + str(relative_path)
                     print(audio_path)
                 else:
@@ -230,7 +230,7 @@ elif st.session_state.step == 4 and user_id:
                 if is_streamlit_cloud:
                     # Streamlit Cloud上でのファイルパス
                     ori_path = Path(row['filepath'])
-                    relative_path = ori_path.relative_to("../data/raw")  # jvs_ver1/jvs017/parallel100/wav24kHz16bit/VOICEACTRESS100_001.wav
+                    relative_path = ori_path.relative_to("./data/raw")  # jvs_ver1/jvs017/parallel100/wav24kHz16bit/VOICEACTRESS100_001.wav
                     audio_path = f"https://raw.githubusercontent.com/libra2924/QA4U3_G46_app/main/data/raw_extracted/" + str(relative_path)
                     print(audio_path)
                 else:
