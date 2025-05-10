@@ -1,0 +1,103 @@
+{
+  "user_id": "7716",
+  "saved_at": "2025-05-05T22:59:07.377055",
+  "selected_names": [
+    "max_f0 > 188.552",
+    "f0_range > 120.513",
+    "hnr > 15.664",
+    "mean_f1 > 641.026",
+    "mean_f2 > 1685.503",
+    "rms_max > 0.132",
+    "odd_ratio_1 > 57.520",
+    "even_ratio_1 > 17.956",
+    "even_ratio_2 > 30.405",
+    "even_ratio_2 > 44.281"
+  ],
+  "feedback": [
+    {
+      "sample_id": 1,
+      "liked": "普通"
+    },
+    {
+      "sample_id": 13,
+      "liked": "普通"
+    },
+    {
+      "sample_id": 88,
+      "liked": "普通"
+    },
+    {
+      "sample_id": 21,
+      "liked": "普通"
+    },
+    {
+      "sample_id": 12,
+      "liked": "好き"
+    },
+    {
+      "sample_id": 41,
+      "liked": "普通"
+    },
+    {
+      "sample_id": 33,
+      "liked": "好き"
+    },
+    {
+      "sample_id": 75,
+      "liked": "好き"
+    },
+    {
+      "sample_id": 44,
+      "liked": "普通"
+    },
+    {
+      "sample_id": 73,
+      "liked": "好き"
+    },
+    {
+      "sample_id": 3,
+      "liked": "普通"
+    },
+    {
+      "sample_id": 22,
+      "liked": "普通"
+    },
+    {
+      "sample_id": 23,
+      "liked": "好き"
+    },
+    {
+      "sample_id": 32,
+      "liked": "好き"
+    },
+    {
+      "sample_id": 34,
+      "liked": "普通"
+    },
+    {
+      "sample_id": 45,
+      "liked": "好き"
+    },
+    {
+      "sample_id": 70,
+      "liked": "好き"
+    },
+    {
+      "sample_id": 87,
+      "liked": "好き"
+    },
+    {
+      "sample_id": 97,
+      "liked": "好き"
+    },
+    {
+      "sample_id": 98,
+      "liked": "普通"
+    }
+  ],
+  "recommended_sample_ids": [
+    77,
+    80,
+    81
+  ]
+}
