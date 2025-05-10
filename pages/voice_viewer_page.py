@@ -52,9 +52,10 @@ def display_audio_list(dataframe):
 
         if is_streamlit_cloud:
             # Streamlit Cloud上でのファイルパス
-            ori_path = row['filepath']
+            ori_path = Path(row['filepath'])
             relative_path = ori_path.relative_to("../data/raw")  # jvs_ver1/jvs017/parallel100/wav24kHz16bit/VOICEACTRESS100_001.wav
             audio_path = f"https://raw.githubusercontent.com/libra2924/QA4U3_G46_app/main/data/raw_extracted/" + str(relative_path)
+            print(audio_path)
         else:
             # ローカル環境でのファイルパス
             audio_path = Path(__file__).parent / row["filepath"]
