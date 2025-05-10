@@ -57,7 +57,7 @@ def display_audio_list(dataframe):
             # ローカル環境でのファイルパス
             audio_path = Path(__file__).parent / row["filepath"]
         
-        st.audio(audio_pathいる, format="audio/wav")
+        st.audio(audio_path, format="audio/wav")
 
 # 特徴量の表を作成する関数
 def create_styled_table(dataframe):
