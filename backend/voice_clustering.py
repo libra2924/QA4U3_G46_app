@@ -15,6 +15,7 @@ from scipy.spatial import ConvexHull
 import scipy.cluster.hierarchy as sch
 import pandas.io.formats.style
 
+is_streamlit_cloud = True
 
 def calculate_vif(X: pd.DataFrame) -> pd.DataFrame:
     """
@@ -166,7 +167,6 @@ def generate_feature_description(feature: str, region: str) -> str:
         return f"{feature} は非常に低いです"
     
 
-
 # 再生ボタンをリストで表示する関数
 def display_audio_list(dataframe):
     """
@@ -174,7 +174,18 @@ def display_audio_list(dataframe):
     """
     for _, row in dataframe.iterrows():
         st.write(f"**{row['jvs_id']}**")
-        st.audio(Path(__file__).parent /row["filepath"], format="audio/wav")
+
+        if is_streamlit_cloud:
+            # Streamlit Cloud上でのファイルパス
+            ori_path = Path(row['filepath'])
+            relative_path = ori_path.relative_to("../data/raw")  # jvs_ver1/jvs017/parallel100/wav24kHz16bit/VOICEACTRESS100_001.wav
+            audio_path = f"https://raw.githubusercontent.com/libra2924/QA4U3_G46_app/main/data/raw_extracted/" + str(relative_path)
+            print(audio_path)
+        else:
+            # ローカル環境でのファイルパス
+            audio_path = Path(__file__).parent / row["filepath"]
+        
+        st.audio(audio_path, format="audio/wav")
 
 # スタイルを適用してデータフレームを表示
 def highlight_scaled_values(val, vmin=-2, vmax=2):

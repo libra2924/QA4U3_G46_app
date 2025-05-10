@@ -6,6 +6,9 @@ import json
 from datetime import datetime
 from backend.qbooster_qubo import build_qboost_qubo  # 自作関数を読み込む
 from backend.recomend import recomend_voice  # 自作関数を読み込む
+from pathlib import Path
+
+is_streamlit_cloud = True
 
 # --- セッション初期化 ---
 if "user_id" not in st.session_state:
@@ -57,6 +60,7 @@ if st.session_state.step == 1 and user_id:
 
     for sid in st.session_state.sample_ids:
         row = samples_df[samples_df["sample_id"] == sid].iloc[0]
+        
         # st.audio(row["filepath"])
         # st.session_state.feedback[sid] = st.radio(
         #     f"{sid} の評価：",
@@ -71,7 +75,22 @@ if st.session_state.step == 1 and user_id:
         with st.container():
             cols = st.columns([2, 1])
             with cols[0]:
-                st.audio(row["filepath"])
+                # st.audio(row["filepath"])
+
+                if is_streamlit_cloud:
+                    # Streamlit Cloud上でのファイルパス
+                    ori_path = Path(row['filepath'])
+                    relative_path = ori_path.relative_to("../data/raw")  # jvs_ver1/jvs017/parallel100/wav24kHz16bit/VOICEACTRESS100_001.wav
+                    audio_path = f"https://raw.githubusercontent.com/libra2924/QA4U3_G46_app/main/data/raw_extracted/" + str(relative_path)
+                    print(audio_path)
+                else:
+                    # ローカル環境でのファイルパス
+                    audio_path = Path(__file__).parent / row["filepath"]
+                
+                st.audio(audio_path, format="audio/wav")
+
+
+        
             with cols[1]:
                 liked = st.button(f"👍 いいね！", key=f"feedback_{sid}")
                 if liked:
@@ -150,7 +169,21 @@ elif st.session_state.step == 3 and user_id:
         with st.container():
             cols = st.columns([2, 1])
             with cols[0]:
-                st.audio(row["filepath"])
+                # st.audio(row["filepath"])
+
+                if is_streamlit_cloud:
+                    # Streamlit Cloud上でのファイルパス
+                    ori_path = Path(row['filepath'])
+                    relative_path = ori_path.relative_to("../data/raw")  # jvs_ver1/jvs017/parallel100/wav24kHz16bit/VOICEACTRESS100_001.wav
+                    audio_path = f"https://raw.githubusercontent.com/libra2924/QA4U3_G46_app/main/data/raw_extracted/" + str(relative_path)
+                    print(audio_path)
+                else:
+                    # ローカル環境でのファイルパス
+                    audio_path = Path(__file__).parent / row["filepath"]
+                
+                st.audio(audio_path, format="audio/wav")
+
+
             with cols[1]:
                 liked = st.button(f"👍 いいね！", key=f"feedback2_{sid}")
                 if liked:
@@ -192,7 +225,20 @@ elif st.session_state.step == 4 and user_id:
         with st.container():
             cols = st.columns([1, 1])
             with cols[0]:
-                st.audio(row["filepath"])
+                # st.audio(row["filepath"])
+
+                if is_streamlit_cloud:
+                    # Streamlit Cloud上でのファイルパス
+                    ori_path = Path(row['filepath'])
+                    relative_path = ori_path.relative_to("../data/raw")  # jvs_ver1/jvs017/parallel100/wav24kHz16bit/VOICEACTRESS100_001.wav
+                    audio_path = f"https://raw.githubusercontent.com/libra2924/QA4U3_G46_app/main/data/raw_extracted/" + str(relative_path)
+                    print(audio_path)
+                else:
+                    # ローカル環境でのファイルパス
+                    audio_path = Path(__file__).parent / row["filepath"]
+
+                st.audio(audio_path, format="audio/wav")
+
             with cols[1]:
                 st.write("jvs_id:", row["jvs_id"])
 
