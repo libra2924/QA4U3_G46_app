@@ -3,10 +3,12 @@ import pandas as pd
 import os
 from pathlib import Path
 
+is_streamlit_cloud =True
+
 # ページ全体のレイアウトを広げる設定
 st.set_page_config(layout="wide")
 
-# CSVファイルのパス
+
 csv_file_path = Path(__file__).parent / "../data/processed/features_VOICEACTRESS100_001.csv"
 
 # CSVデータを読み込む
@@ -47,7 +49,15 @@ def display_audio_list(dataframe):
     """
     for _, row in dataframe.iterrows():
         st.write(f"**{row['jvs_id']}**")
-        st.audio(Path(__file__).parent / row["filepath"], format="audio/wav")
+
+        if is_streamlit_cloud:
+            # Streamlit Cloud上でのファイルパス
+            audio_path = f"https://raw.githubusercontent.com/libra2924/QA4U3_G46_app/main/{row['filepath']}"
+        else:
+            # ローカル環境でのファイルパス
+            audio_path = Path(__file__).parent / row["filepath"]
+        
+        st.audio(audio_pathいる, format="audio/wav")
 
 # 特徴量の表を作成する関数
 def create_styled_table(dataframe):
